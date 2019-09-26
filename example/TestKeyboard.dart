@@ -1,23 +1,32 @@
-# vehicle_keyboard
-[![Pub](https://img.shields.io/pub/v/dio.svg?style=flat-square)](https://pub.flutter-io.cn/packages/vehicle_keyboard)
-专为提高中国车牌号码输入速度而定制开发的专用键盘组件。
-
-## Getting Started
-
-### Add dependency
-
-```yaml
-dependencies:
-    vehicle_keyboard: ^0.0.2 #latest version
-
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:vehicle_keyboard/vehicle_keyboard.dart';
-```
 
-## Example
+void main() => runApp(MyApp());
 
-![img](http://g.recordit.co/zMKfX8e5cW.gif)
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        // This is the theme of your application.
+        primarySwatch: Colors.blue,
+      ),
+      home: SecondScreen(),
+    );
+  }
+}
 
-```dart
+class SecondScreen extends StatefulWidget {
+  SecondScreen({Key key}) : super(key: key);
+
+
+  @override
+  State<StatefulWidget> createState() => SecondScreenState();
+}
+
 class SecondScreenState extends State<SecondScreen> {
   bool showKeyboard = false;
 
@@ -74,6 +83,3 @@ class SecondScreenState extends State<SecondScreen> {
     );
   }
 }
-```
-
-

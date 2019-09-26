@@ -1,8 +1,8 @@
 name: vehicle_keyboard
 description: 专为提高中国车牌号码输入速度而定制开发的专用键盘组件。
-version: 0.0.1
-author: whs, LLC <664116298@qq.com>
-homepage: http://wuhongsheng.top/
+version: 0.0.2
+author: whs, <664116298@qq.com>
+homepage: https://github.com/wuhongsheng/vehicle_keyboard
 
 environment:
   sdk: ">=2.1.0 <3.0.0"

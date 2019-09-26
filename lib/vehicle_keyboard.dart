@@ -20,10 +20,14 @@ class VehicleKeyboardState extends State<VehicleKeyboard> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   bool isFirst = true;
 
-  final double maxHeight = 280;
-  final double minHeight = 230;
+  final double maxHeight = ScreenUtil.instance.setHeight(680);
+  final double minHeight = ScreenUtil.instance.setHeight(580);
 
-  double height = 230;
+  final double textSize = 20;
+
+  double height = ScreenUtil.instance.setHeight(680);
+
+  double keyWidth = ScreenUtil.instance.setHeight(100);
 
   /// 键盘的整体回调，根据不同的按钮事件来进行相应的逻辑实现
   void _onKeyDown(KeyDownEvent data) {
@@ -67,17 +71,24 @@ class VehicleKeyboardState extends State<VehicleKeyboard> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    /* ScreenUtil.instance = ScreenUtil(width: 1080, height: 1920)..init(context);
+
+    print(ScreenUtil.instance.width);
+    print(ScreenUtil.instance.height);
+    keyWidth = ScreenUtil.instance.setWidth(80);*/
     switchContent(widget.controller);
   }
   @override
   Widget build(BuildContext context) {
     //设置适配尺寸 (填入设计稿中设备的屏幕尺寸)
-    ScreenUtil.instance = ScreenUtil(width: 1080, height: 1920)
-      ..init(context);
+    ScreenUtil.instance = ScreenUtil(width: 1080, height: 1920)..init(context);
+    print(ScreenUtil.instance.width);
+    print(ScreenUtil.instance.height);
+    keyWidth = ScreenUtil.instance.setWidth(100);
     return new Container(
       color: Colors.grey[300],
       key: _scaffoldKey,
-      width: double.infinity,
+      width: ScreenUtil.instance.width,
       height: height,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -88,8 +99,8 @@ class VehicleKeyboardState extends State<VehicleKeyboard> {
             color: Colors.grey,
           ),
           Container(
-            width: double.infinity,
-            height: 35,
+            width: ScreenUtil.instance.width,
+            height: ScreenUtil.instance.setHeight(75),
             color: Colors.white,
             child: Row(
               children: <Widget>[
@@ -97,13 +108,13 @@ class VehicleKeyboardState extends State<VehicleKeyboard> {
                   flex: 1,
                   child: Container(
                     color: Colors.white,
-                    child: TextField(
+                    /* child: TextField(
                       onChanged: (value) {},
-                    ),
+                    ),*/
                   ),
                 ),
                 Container(
-                    height: 35,
+                    height: ScreenUtil.instance.setHeight(75),
                     color: Colors.white,
                     child: Center(
                       child: IconButton(
@@ -119,7 +130,9 @@ class VehicleKeyboardState extends State<VehicleKeyboard> {
               ],
             ),
           ),
-          isFirst ? _Province() : _OtherKey()
+          isFirst ? _Province() : _OtherKey(),
+          SizedBox(height: ScreenUtil.bottomBarHeight,)
+
         ],
       ),
     );
@@ -128,12 +141,12 @@ class VehicleKeyboardState extends State<VehicleKeyboard> {
   /// 键盘按键
   Widget _RaiseButton(String name) {
     return Container(
-      width: 45,
+      width: keyWidth,
       child: RaisedButton(
         child: Text(
           name,
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 24, color: Colors.black),
+          style: TextStyle(fontSize: textSize, color: Colors.black),
         ),
         color: Colors.white,
         textTheme: ButtonTextTheme.accent,
@@ -151,12 +164,12 @@ class VehicleKeyboardState extends State<VehicleKeyboard> {
   /// 确定按键
   Widget _CommitButton(bool enable) {
     return Container(
-      width: 90,
+      width: ScreenUtil.instance.setWidth(230),
       child: RaisedButton(
         child: Text(
           '确定',
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 24, color: Colors.white),
+          style: TextStyle(fontSize: textSize, color: Colors.white),
         ),
         color: Colors.lightBlue,
         disabledColor: Colors.grey[400],
@@ -176,7 +189,7 @@ class VehicleKeyboardState extends State<VehicleKeyboard> {
   /// 删除按键
   Widget _DelButton() {
     return Container(
-      width: 60,
+      width: ScreenUtil.instance.setWidth(200),
       child: RaisedButton(
         child: Icon(Icons.backspace),
         color: Colors.white,
@@ -194,12 +207,12 @@ class VehicleKeyboardState extends State<VehicleKeyboard> {
   /// 切换按键
   Widget _SwitchButton(String name, String key) {
     return Container(
-      width: 90,
+      width: ScreenUtil.instance.setWidth(230),
       child: RaisedButton(
           child: Text(
             name,
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 24, color: Colors.black),
+            style: TextStyle(fontSize: textSize, color: Colors.black),
           ),
           color: Colors.white,
           textTheme: ButtonTextTheme.accent,
@@ -218,6 +231,7 @@ class VehicleKeyboardState extends State<VehicleKeyboard> {
   Widget _Province() {
     return Container(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -269,7 +283,7 @@ class VehicleKeyboardState extends State<VehicleKeyboard> {
               _RaiseButton('宁'),
               _RaiseButton('新'),
               _RaiseButton('藏'),
-              SizedBox(width: 100),
+              SizedBox(width: ScreenUtil.instance.setWidth(100)),
               _SwitchButton('更多', 'more'),
               _CommitButton(false),
             ],
@@ -283,6 +297,7 @@ class VehicleKeyboardState extends State<VehicleKeyboard> {
   Widget _OtherKey() {
     return Container(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -351,7 +366,7 @@ class VehicleKeyboardState extends State<VehicleKeyboard> {
               _RaiseButton('领'),
               _RaiseButton('港'),
               _RaiseButton('澳'),
-              SizedBox(width: 80,),
+              SizedBox(width: ScreenUtil.instance.setWidth(80),),
               _SwitchButton('省份', 'province'),
               _CommitButton(true),
             ],
