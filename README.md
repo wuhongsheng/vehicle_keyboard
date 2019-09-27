@@ -1,5 +1,6 @@
 # vehicle_keyboard
-[![Pub](https://img.shields.io/pub/v/dio.svg?style=flat-square)](https://pub.flutter-io.cn/packages/vehicle_keyboard)
+[![Pub](https://img.shields.io/pub/v/vehicle_keyboard?style=flat-square)](https://pub.flutter-io.cn/packages/vehicle_keyboard)
+
 专为提高中国车牌号码输入速度而定制开发的专用键盘组件。
 
 欢迎大家提出宝贵的意见
@@ -16,7 +17,7 @@ dependencies:
 
 ## Example
 
-![img](https://github.com/wuhongsheng/vehicle_keyboard/tree/master/example/zMKfX8e5cW.gif)
+![img](../example/zMKfX8e5cW.gif)
 
 
 ```dart
