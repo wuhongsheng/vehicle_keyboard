@@ -10,7 +10,6 @@
 dependencies:
     vehicle_keyboard: ^0.0.2 #latest version
 
-import 'package:vehicle_keyboard/vehicle_keyboard.dart';
 ```
 
 ## Example
@@ -18,6 +17,8 @@ import 'package:vehicle_keyboard/vehicle_keyboard.dart';
 ![img](http://g.recordit.co/zMKfX8e5cW.gif)
 
 ```dart
+import 'package:vehicle_keyboard/vehicle_keyboard.dart';
+
 class SecondScreenState extends State<SecondScreen> {
   bool showKeyboard = false;
 
