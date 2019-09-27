@@ -17,7 +17,7 @@ dependencies:
 
 ## Example
 
-![img](../example/zMKfX8e5cW.gif)
+![img](example/zMKfX8e5cW.gif)
 
 
 ```dart
